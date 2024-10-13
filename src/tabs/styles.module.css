@@ -1,0 +1,17 @@
+.tabs {
+  width: 100%;
+}
+
+.tabs_ctn {
+  background: #fff;
+  border-top: none;
+  min-height: 200px;
+  padding-left: 20px;
+  border-top-right-radius: 8px;
+}
+
+.tabs_tab_ctn {
+  display: flex;
+  background: inherit;
+  border-radius: 8px 8px 0 0;
+}

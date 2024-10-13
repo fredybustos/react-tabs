@@ -1,0 +1,38 @@
+.tab {
+  color: #000;
+  background: #dee1e6;
+  border: none;
+  padding: 8px 20px;
+  border-bottom: none;
+  cursor: pointer;
+  font-size: inherit;
+  transition: all 0.3s ease;
+  border-radius: 8px 8px 0 0;
+  margin-right: 4px;
+}
+
+.tab:disabled {
+  opacity: 0.6;
+  background: inherit;
+  cursor: initial;
+  pointer-events: none;
+}
+
+.tab:focus {
+  outline: none;
+}
+
+.tab:hover {
+  opacity: 0.8;
+  border-color: inherit;
+}
+
+.tab.active:hover{
+  background: inherit;
+  opacity: 1;
+}
+
+.tab.active {
+  background: #fff;
+  z-index: 2;
+}
