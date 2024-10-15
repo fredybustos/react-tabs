@@ -1,9 +1,9 @@
 import React from 'react'
-import styles from './styles.module.css'
-import { TabProps, TabsProps, RenderTabs } from '../types/tabs'
+import { TabProps, TabsProps, RenderTabs } from '../types'
 import { Tab } from '../tab'
 import useTabs from '../hooks/useTabs'
 import { cleanObject } from '../utils'
+import './tabs.css'
 
 const renderTab = ({ child, index, activeTab, activeStyles, onTabActive }: RenderTabs) => {
   const { title, disabled, hideTab, style, className, active } = child.props
@@ -52,8 +52,8 @@ export const Tabs = ({
   }
 
   return (
-    <div className={styles.tabs}>
-      <div className={styles.tabs_tab_ctn}>
+    <div className="rc-tabs">
+      <div className="rc-tabs_tab_ctn">
         {childTabs.map((child, index) => {
           const { title, disabled, hideTab, style, className, active } = child.props
           return renderTab({
@@ -77,7 +77,7 @@ export const Tabs = ({
           })
         })}
       </div>
-      <div className={`${className} ${styles.tabs_ctn}`} style={style}>
+      <div className={`rc-tabs_ctn ${className}`} style={style}>
         {renderChildren[activeTab]}
       </div>
     </div>

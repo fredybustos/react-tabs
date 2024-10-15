@@ -1,16 +1,17 @@
-.tabs {
+.rc-tabs {
   width: 100%;
+  text-align: left;
 }
 
-.tabs_ctn {
-  background: #fff;
+.rc-tabs_ctn {
+  background: #dee1e6;
   border-top: none;
-  min-height: 200px;
+  min-height: 100px;
   padding-left: 20px;
   border-top-right-radius: 8px;
 }
 
-.tabs_tab_ctn {
+.rc-tabs_tab_ctn {
   display: flex;
   background: inherit;
   border-radius: 8px 8px 0 0;

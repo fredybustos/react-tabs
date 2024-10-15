@@ -1,6 +1,6 @@
-.tab {
+.rc-tab {
   color: #000;
-  background: #dee1e6;
+  background: #dee1e66e;
   border: none;
   padding: 8px 20px;
   border-bottom: none;
@@ -11,28 +11,26 @@
   margin-right: 4px;
 }
 
-.tab:disabled {
+.rc-tab:disabled {
   opacity: 0.6;
   background: inherit;
   cursor: initial;
   pointer-events: none;
 }
 
-.tab:focus {
+.rc-tab:focus {
   outline: none;
 }
 
-.tab:hover {
+.rc-tab:hover {
   opacity: 0.8;
-  border-color: inherit;
 }
 
-.tab.active:hover{
-  background: inherit;
-  opacity: 1;
+.rc-tab_active:hover{
+  opacity: 0.8;
 }
 
-.tab.active {
-  background: #fff;
+.rc-tab_active {
+  background: #dee1e6;
   z-index: 2;
 }

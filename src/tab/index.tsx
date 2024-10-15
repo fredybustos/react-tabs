@@ -1,6 +1,6 @@
 import React from 'react'
-import { TabProps } from '../types/tabs'
-import styles from './styles.module.css'
+import { TabProps } from '../types'
+import './tab.css'
 
 export const Tab = ({
   onClick,
@@ -15,7 +15,7 @@ export const Tab = ({
 }: TabProps) => {
   if (hideTab) return null
   const mergedStyles = active ? { ...style, ...activeStyles.style } : style
-  const mergedClassName = active ? `${styles.active} ${activeStyles.className}` : className
+  const mergedClassName = active ? `rc-tab_active ${activeStyles.className}` : className
 
   return (
     <button
@@ -26,7 +26,7 @@ export const Tab = ({
       aria-selected={active}
       data-testid={`tab-${testId}`}
       aria-controls={`panel-${testId}`}
-      className={`${styles.tab} ${mergedClassName}`}
+      className={`rc-tab ${mergedClassName}`}
     >
       {title}
     </button>

@@ -27,7 +27,7 @@ describe('Tab Component', () => {
     render(<Tab {...defaultProps} active={true} activeStyles={activeStyles} />)
     const tab = screen.getByRole('tab')
     expect(tab).toHaveStyle({ color: 'red' })
-    expect(tab).toHaveClass('active-class', 'custom-active')
+    expect(tab).toHaveClass(' rc-tab', 'rc-tab_active', 'custom-active')
   })
 
   it('applies custom className', () => {

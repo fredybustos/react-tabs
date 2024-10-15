@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "ES2018",
     "module": "esnext",
     "lib": [
       "dom",
@@ -12,7 +12,11 @@
     ],
     "jsx": "react",
     "declaration": true,
-    "declarationDir": "dist",
+    "typeRoots": [
+      "./src/types",
+      "./node_modules/@types"
+    ],
+    "outDir": "dist",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,

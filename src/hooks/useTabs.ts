@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react'
-import { TabProps } from '../types/tabs'
+import { TabProps } from '../types'
 
 export default function useTabs(
   children: React.ReactElement<TabProps> | React.ReactElement<TabProps>[]

@@ -1,4 +1,6 @@
-export interface TabProps {
+import React from 'react'
+
+export type TabProps = {
   title: React.ReactElement | string
   active?: boolean
   testId?: string
@@ -11,7 +13,7 @@ export interface TabProps {
   children?: React.ReactNode | string
 }
 
-export interface TabsProps {
+export type TabsProps = {
   children: React.ReactElement<TabProps> | React.ReactElement<TabProps>[]
   className?: string
   style?: React.CSSProperties
@@ -19,7 +21,7 @@ export interface TabsProps {
   onSelect?: (arg: { index: number; element: Partial<TabProps> }) => void
 }
 
-export interface RenderTabs {
+export type RenderTabs = {
   child: React.ReactElement<TabProps>
   index: number
   activeTab: number
@@ -29,6 +31,6 @@ export interface RenderTabs {
 }
 
 type Styles = {
-  style: React.CSSProperties
-  className: string
+  style?: React.CSSProperties
+  className?: string
 }
