@@ -13,6 +13,16 @@ To install the tabs component, run the following command:
   yarn add @fredybustos/react-tabs
 ```
 
+**Import css file**
+
+To ensure that the tab styles are applied correctly, you need to import the generated CSS file `tabs.min.css`. Depending on your working environment, you can do this in the following ways:
+
+In your React project, add the following import statement to your `index.js` file, before importing your project's CSS:
+
+```bash
+import '@fredybustos/react-tabs/dist/esm/tabs.min.css';
+```
+
 ### Usage
 
 This is how you can set up a simple tab content. The active tab will be highlighted automatically, and users can switch between the sections seamlessly.
