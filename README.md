@@ -44,14 +44,16 @@ const App = () => {
         Content of Tab 1
       </Tab>
       <Tab
-        title={
-          <Stack direction='row' alignItems='center'>
-            <CommentIcon sx={{ mr: 2 }} />
-            <Typography>Title</Typography>
-          </Stack>
-        }
+        icon={<CommentIcon sx={{ mr: 2 }} />}
+        title="Tab 2"
       >
         Content of Tab 2
+      </Tab>
+      <Tab
+        disabled
+        title="Tab 3"
+      >
+        Content of Tab 3
       </Tab>
     </Tabs>
   );
@@ -75,8 +77,8 @@ type Styles = {
 |  disabled 	    |   `boolean` | `false`	| 	Whether the tab is disabled	|
 |  hideTab 	    |   `boolean` | `false`	| 	Whether to hide the tab	|
 |  className 	    |   `string` | `tab`	| 	Additional class name	|
+|  iconRight 	    |   `boolean` | `false`	| Whether to put icon right	|
 |  style 	    |   `React.CSSProperties` | 	| 	Custom styles	|
-|  activeStyles 	    |   `Styles` | 	| 	Custom styles	|
 |  children 	    |   `React.ReactNode - string` | 	| 	Tab information for rendering	|
 
 
@@ -85,7 +87,7 @@ type Styles = {
 
 |  Prop Name 	| Type  	|  Default Value 	| Description	|
 |:-----------	|:-------	|:---------------	|:-------------	|
-|  children 	| `React.ReactElement<TabProps> -	React.ReactElement<TabProps>[]`	| Tabs information for rendering	|
+|  children 	| `React.ReactNode - string`	| Tabs information for rendering	|
 |  className 	    |   `string` | `tabs-ctn`	| Additional class name	|
 |  style 	    |   `React.CSSProperties` | 	| Custom styles|
 |  activeStyles 	    |   `Styles` | 	| Custom active styles|

@@ -11,9 +11,8 @@
   margin-right: 4px;
 }
 
-.rc-tab:disabled {
-  opacity: 0.6;
-  background: inherit;
+.rc-tab[data-disabled="true"]{
+  opacity: 0.7;
   cursor: initial;
   pointer-events: none;
 }
@@ -31,6 +30,30 @@
 }
 
 .rc-tab_active {
-  background: #dee1e6;
   z-index: 2;
+  background: #dee1e6;
+}
+
+.rc-tab_active[data-disabled="true"] {
+  opacity: 0.7;
+  cursor: initial;
+  pointer-events: none;
+}
+
+.rc-tab_icon {
+  display: flex;
+  align-items: center;
+}
+
+.rc-tab_icon > span {
+  margin-left: 8px;
+}
+
+.rc-tab_icon_right {
+  flex-direction: row-reverse;
+}
+
+.rc-tab_icon_right > span {
+  margin-right: 8px;
+  margin-left: 0;
 }

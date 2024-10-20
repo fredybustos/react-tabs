@@ -1,26 +1,38 @@
 import React from 'react'
-import { TabProps, TabsProps, RenderTabs } from '../types'
-import { Tab } from '../tab'
+import { TabsProps, RenderTabs, TabComponentProps } from '../types'
+import { TabComponent } from '../tab'
 import useTabs from '../hooks/useTabs'
 import { cleanObject } from '../utils'
 import './tabs.css'
 
 const renderTab = ({ child, index, activeTab, activeStyles, onTabActive }: RenderTabs) => {
-  const { title, disabled, hideTab, style, className, active } = child.props
+  const { title, disabled, hideTab, style, className, active, icon, rightIcon } = child.props
   return (
-    <Tab
+    <TabComponent
       key={index}
       title={title}
+      icon={icon}
       style={style}
       hideTab={hideTab}
       disabled={disabled}
+      rightIcon={rightIcon}
       className={className}
       activeStyles={activeStyles}
       active={index === activeTab}
       onClick={() =>
         onTabActive({
           index,
-          element: { title, disabled, hideTab, style, className, active, activeStyles },
+          element: {
+            title,
+            disabled,
+            hideTab,
+            style,
+            className,
+            rightIcon,
+            active,
+            icon,
+            children: undefined,
+          },
         })
       }
     />
@@ -46,7 +58,7 @@ export const Tabs = ({
     {}
   )
 
-  const setActiveTab = (arg: { index: number; element: TabProps }) => {
+  const setActiveTab = (arg: { index: number; element: TabComponentProps }) => {
     onTabActive(arg.index)
     onSelect?.({ index: arg.index, element: cleanObject({ ...arg.element }) })
   }
@@ -55,23 +67,26 @@ export const Tabs = ({
     <div className="rc-tabs">
       <div className="rc-tabs_tab_ctn">
         {childTabs.map((child, index) => {
-          const { title, disabled, hideTab, style, className, active } = child.props
+          const { title, disabled, hideTab, style, className, active, icon, rightIcon } =
+            child.props
           return renderTab({
             activeStyles,
             activeTab,
             child,
             index,
+            icon,
             onTabActive: () =>
               setActiveTab({
                 index,
                 element: {
-                  title,
+                  className,
+                  rightIcon,
                   disabled,
                   hideTab,
-                  style,
-                  className,
                   active,
-                  activeStyles,
+                  icon,
+                  title,
+                  style,
                 },
               }),
           })
