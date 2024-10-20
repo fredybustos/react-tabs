@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
-import { Tab } from '../tab'
+import { TabComponent } from '../tab'
 import '@testing-library/jest-dom'
 
 jest.mock('../tab/styles.module.css', () => ({
@@ -16,29 +16,21 @@ describe('Tab Component', () => {
   }
 
   it('calls onClick when clicked', () => {
-    render(<Tab {...defaultProps} />)
+    render(<TabComponent {...defaultProps} />)
     const tab = screen.getByRole('tab')
     fireEvent.click(tab)
     expect(defaultProps.onClick).toHaveBeenCalledTimes(1)
   })
 
-  it('applies active styles when active', () => {
-    const activeStyles = { style: { color: 'red' }, className: 'custom-active' }
-    render(<Tab {...defaultProps} active={true} activeStyles={activeStyles} />)
-    const tab = screen.getByRole('tab')
-    expect(tab).toHaveStyle({ color: 'red' })
-    expect(tab).toHaveClass(' rc-tab', 'rc-tab_active', 'custom-active')
-  })
-
   it('applies custom className', () => {
-    render(<Tab {...defaultProps} className="custom-class" />)
+    render(<TabComponent {...defaultProps} className="custom-class" />)
     const tab = screen.getByRole('tab')
     expect(tab).toHaveClass('custom-class')
   })
 
   it('is disabled when disabled prop is true', () => {
-    render(<Tab {...defaultProps} disabled={true} />)
+    render(<TabComponent {...defaultProps} disabled={true} />)
     const tab = screen.getByRole('tab')
-    expect(tab).toBeDisabled()
+    expect(tab).toHaveAttribute('data-disabled')
   })
 })

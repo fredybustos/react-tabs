@@ -33,7 +33,7 @@ export type TabsProps = {
   className?: string
   style?: React.CSSProperties
   activeStyles?: Styles
-  onSelect?: (arg: { index: number; element: Partial<TabProps> }) => void
+  onSelect?: (arg: { index: number; element: Partial<TabComponentProps> }) => void
 }
 
 export type RenderTabs = {
