@@ -4,15 +4,17 @@
 }
 
 .rc-tabs_ctn {
-  background: #dee1e6;
+  background: #fff;
   border-top: none;
   min-height: 100px;
   padding-left: 20px;
-  border-top-right-radius: 8px;
+  margin-top: 12px;
+  border-radius: 8px 8px 0 0;
 }
 
 .rc-tabs_tab_ctn {
   display: flex;
   background: inherit;
+  gap: 8px;
   border-radius: 8px 8px 0 0;
 }

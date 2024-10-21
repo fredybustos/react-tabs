@@ -1,14 +1,12 @@
 .rc-tab {
-  color: #000;
-  background: #dee1e66e;
+  background: #4646466e;
   border: none;
-  padding: 8px 20px;
+  padding: 8px 16px;
   border-bottom: none;
   cursor: pointer;
   font-size: inherit;
   transition: all 0.3s ease;
-  border-radius: 8px 8px 0 0;
-  margin-right: 4px;
+  border-radius: 8px;
 }
 
 .rc-tab[data-disabled="true"]{
@@ -31,7 +29,8 @@
 
 .rc-tab_active {
   z-index: 2;
-  background: #dee1e6;
+  background: #fff;
+  color: #0f172a;
 }
 
 .rc-tab_active[data-disabled="true"] {
