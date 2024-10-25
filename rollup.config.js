@@ -18,6 +18,11 @@ export default [
         format: 'esm',
         sourcemap: true,
       },
+      {
+        file: packageJson.module,
+        format: 'esm',
+        sourcemap: true,
+      },
     ],
     plugins: [
       esbuild.default(),
