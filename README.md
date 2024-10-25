@@ -1,5 +1,8 @@
 # Tabs Component
 
+[![NPM Version](https://img.shields.io/npm/v/@fredybustos/react-tabs.svg)](https://npmjs.com/package//@fredybustos/react-tabs)
+
+
 This React library offers a fully customizable, dynamic tab system that allows developers to easily integrate multi-view content navigation into their applications. Designed for versatility and ease of use, this tab component can seamlessly fit into any project, whether you're building a dashboard, a user profile, or a data-driven application.
 
 
