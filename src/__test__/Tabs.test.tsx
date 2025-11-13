@@ -86,4 +86,148 @@ describe('Tabs Component', () => {
     expect(activeTab).toHaveStyle({ color: 'red' })
     expect(activeTab).toHaveClass('rc-tab_active')
   })
+
+  it('applies custom className to content container', () => {
+    const customClass = 'custom-content-class'
+    const { container } = render(
+      <Tabs className={customClass}>
+        <TabComponent title="Tab 1">Content 1</TabComponent>
+      </Tabs>
+    )
+    const contentContainer = container.querySelector('.rc-tabs_ctn')
+    expect(contentContainer).toHaveClass('rc-tabs_ctn', customClass)
+  })
+
+  it('applies custom style to content container', () => {
+    const customStyle = { padding: '20px', backgroundColor: 'blue' }
+    const { container } = render(
+      <Tabs style={customStyle}>
+        <TabComponent title="Tab 1">Content 1</TabComponent>
+      </Tabs>
+    )
+    const contentContainer = container.querySelector('.rc-tabs_ctn')
+    expect(contentContainer).toHaveStyle(customStyle)
+  })
+
+  it('marks disabled tab with data-disabled attribute', () => {
+    render(
+      <Tabs>
+        <TabComponent title="Tab 1">Content 1</TabComponent>
+        <TabComponent title="Tab 2" disabled>
+          Content 2
+        </TabComponent>
+      </Tabs>
+    )
+    const disabledTab = screen.getByText('Tab 2')
+    expect(disabledTab).toHaveAttribute('data-disabled', 'true')
+  })
+
+  it('handles clicking the already active tab', () => {
+    renderTabs()
+    const tab1 = screen.getByText('Tab 1')
+    fireEvent.click(tab1)
+    expect(mockOnSelect).toHaveBeenCalledTimes(1)
+    expect(screen.getByText('Content 1')).toBeInTheDocument()
+  })
+
+  it('renders with a single child tab', () => {
+    render(
+      <Tabs>
+        <TabComponent title="Only Tab">Only Content</TabComponent>
+      </Tabs>
+    )
+    expect(screen.getByText('Only Tab')).toBeInTheDocument()
+    expect(screen.getByText('Only Content')).toBeInTheDocument()
+  })
+
+  it('applies correct base CSS classes', () => {
+    const { container } = render(
+      <Tabs>
+        <TabComponent title="Tab 1">Content 1</TabComponent>
+      </Tabs>
+    )
+    expect(container.querySelector('.rc-tabs')).toBeInTheDocument()
+    expect(container.querySelector('.rc-tabs_tab_ctn')).toBeInTheDocument()
+    expect(container.querySelector('.rc-tabs_ctn')).toBeInTheDocument()
+  })
+
+  it('renders tabs with icons', () => {
+    const IconComponent = () => <span>🏠</span>
+    render(
+      <Tabs>
+        <TabComponent title="Home" icon={<IconComponent />}>
+          Home Content
+        </TabComponent>
+        <TabComponent title="Settings">Settings Content</TabComponent>
+      </Tabs>
+    )
+    expect(screen.getByText('🏠')).toBeInTheDocument()
+    expect(screen.getByText('Home')).toBeInTheDocument()
+  })
+
+  it('calls onSelect with correct element data', () => {
+    render(
+      <Tabs onSelect={mockOnSelect}>
+        <TabComponent title="Tab 1" className="custom-tab">
+          Content 1
+        </TabComponent>
+        <TabComponent title="Tab 2">Content 2</TabComponent>
+      </Tabs>
+    )
+    fireEvent.click(screen.getByText('Tab 2'))
+    expect(mockOnSelect).toHaveBeenCalledWith(
+      expect.objectContaining({
+        index: 1,
+        element: expect.objectContaining({
+          title: 'Tab 2',
+        }),
+      })
+    )
+  })
+
+  it('switches between multiple tabs correctly', () => {
+    renderTabs()
+
+    // Click Tab 2
+    fireEvent.click(screen.getByText('Tab 2'))
+    expect(screen.getByText('Content 2')).toBeInTheDocument()
+    expect(screen.queryByText('Content 1')).not.toBeInTheDocument()
+
+    // Click Tab 1
+    fireEvent.click(screen.getByText('Tab 1'))
+    expect(screen.getByText('Content 1')).toBeInTheDocument()
+    expect(screen.queryByText('Content 2')).not.toBeInTheDocument()
+  })
+
+  it('maintains tab state after multiple interactions', () => {
+    renderTabs()
+
+    fireEvent.click(screen.getByText('Tab 2'))
+    fireEvent.click(screen.getByText('Tab 1'))
+    fireEvent.click(screen.getByText('Tab 2'))
+
+    expect(mockOnSelect).toHaveBeenCalledTimes(3)
+    expect(screen.getByText('Content 2')).toBeInTheDocument()
+  })
+
+  it('handles tabs with custom styles per tab', () => {
+    const customStyle1 = { backgroundColor: 'blue' }
+    const customStyle2 = { backgroundColor: 'red' }
+    render(
+      <Tabs>
+        <TabComponent title="Tab 1" style={customStyle1}>
+          Content 1
+        </TabComponent>
+        <TabComponent title="Tab 2" style={customStyle2}>
+          Content 2
+        </TabComponent>
+      </Tabs>
+    )
+
+    const tab1 = screen.getByText('Tab 1')
+    const tab2 = screen.getByText('Tab 2')
+
+    expect(tab1).toHaveStyle({ backgroundColor: 'blue' })
+    expect(tab2).toHaveStyle({ backgroundColor: 'red' })
+  })
 })
